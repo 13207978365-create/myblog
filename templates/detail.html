@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    {# 中间文章的区域 #}
+    <div class="content">
+        <header class="article-header">
+            <h1 class="article-title">
+                {# 文章标题 #}
+                <a href="javascript:;" title="{{ art_obj.title }}">{{ art_obj.title }}</a>
+            </h1>
+            <div class="article-meta">
+                <span class="item article-meta-time">
+                    {# 发布时间 #}
+	                <time class="time" data-toggle="tooltip" data-placement="bottom" title=""
+                          data-original-title="发表时间：{{ art_obj.add_time }}">
+                        <i class="glyphicon glyphicon-time"></i> {{ art_obj.add_time }}
+                    </time>
+	            </span>
+                <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title=""
+                      data-original-title="{{ art_obj.category }}">
+                    <i class="glyphicon glyphicon-list"></i>
+                    {# 分类 #}
+                    <a href="{% url 'list' art_obj.category %}"
+                       title="{{ art_obj.category }}">{{ art_obj.category }}</a>
+                </span>
+                <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title=""
+                      data-original-title="浏览量">
+                    {# 点击数 #}
+                    <i class="glyphicon glyphicon-eye-open"></i> {{ art_obj.click_num }}
+                </span>
+                <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title=""
+                      data-original-title="留言量">
+                    {# 留言数 #}
+                    <i class="glyphicon glyphicon-comment"></i> {{ art_obj.cont_num }}
+                </span>
+            </div>
+        </header>
+        <article class="article-content">
+            <p>
+                <img data-original="{% static 'media/' %}{{ art_obj.image }}"
+                     src="{% static 'media/' %}{{ art_obj.image }}" alt=""/>
+            </p>
+            <p style="white-space: normal;">
+                <img src="http://img.baidu.com/hi/bobo/B_0003.gif" draggable="false">
+            </p>
+            <p>
+                {# 文章内容 #}
+                {{ art_obj.content|safe }}
+                {#            <p>Flask是一个使用&nbsp;<a href="https://baike.baidu.com/item/Python" target="_blank">Python</a>&nbsp;编写的轻量级#}
+                {#                Web 应用框架。其&nbsp;<a#}
+                {#                        href="https://baike.baidu.com/item/WSGI" target="_blank">WSGI</a>&nbsp;工具箱采用 Werkzeug ，<a#}
+                {#                        href="https://baike.baidu.com/item/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/907667"#}
+                {#                        target="_blank">模板引擎</a>则使用 Jinja2 。Flask使用 BSD 授权。</p>#}
+                {##}
+                {#            <p>Flask也被称为 &ldquo;microframework&rdquo; ，因为它使用简单的核心，用 extension 增加其他功能。Flask没有默认使用的数据库、窗体验证工具。<sup>&nbsp;[1]</sup><a#}
+                {#                    name="ref_[1]_9910417">&nbsp;</a>#}
+                {#            </p>#}
+                {##}
+                {#            <p>Flask是一个轻量级的可定制框架，使用Python语言编写，较其他同类型框架更为灵活、轻便、安全且容易上手。它可以很好地结合<a#}
+                {#                    href="https://baike.baidu.com/item/MVC%E6%A8%A1%E5%BC%8F/713147" target="_blank">MVC模式</a>进行开发，开发人员分工合作，小型团队在短时间内就可以完成功能丰富的中小型网站或<a#}
+                {#                    href="https://baike.baidu.com/item/Web%E6%9C%8D%E5%8A%A1/2837593" target="_blank">Web服务</a>的实现。另外，Flask还有很强的定制性，用户可以根据自己的需求来添加相应的功能，在保持核心功能简单的同时实现功能的丰富与扩展，其强大的插件库可以让用户实现个性化的网站定制，开发出功能强大的网站。#}
+                {#            </p>#}
+
+            <pre class="prettyprint lang-cs"></pre>
+            <script>
+                window._bd_share_config = {
+                    "common": {
+                        "bdSnsKey": {},
+                        "bdText": "",
+                        "bdMini": "2",
+                        "bdMiniList": false,
+                        "bdPic": "",
+                        "bdStyle": "1",
+                        "bdSize": "32"
+                    }, "share": {}
+                };
+                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];
+            </script>
+            <p style="white-space: normal;"><img src="http://img.baidu.com/hi/jx2/j_0002.gif"/></p>
+            <p>请随手给个star，谢谢！</p>
+            </p>
+        </article>
+
+        <div class="article-shang">
+            <p>
+                <a href="javascript:void(0)" rel="nofollow" style="color: #fff" onclick="dashangToggle()"
+                   class="dashang" title="如文章有帮助到你，支持一下"
+                   draggable="false">打赏</a>
+            </p>
+        </div>
+        <div class="hide_box" style="display: none;"></div>
+        <div class="shang_box" style="display: none;">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭" draggable="false">
+                <img src="{% static 'images/close.jpg' %}" alt="取消" draggable="false">
+            </a>
+            <img class="shang_logo" src="{% static 'images/logo.png' %}" alt="D5网" draggable="false">
+            <div class="shang_tit">
+                <p>
+                    感谢您的支持，我会继续努力的!</p>
+            </div>
+            <div class="shang_payimg">
+                <img src="{% static 'images/微信收款码.jpg' %}" alt="扫码支持" title="微信扫一扫" draggable="false">
+            </div>
+            <div class="pay_explain">
+                扫码打赏，您说多少就多少
+            </div>
+            <div class="shang_payselect">
+                <img src="{% static 'images/wechat.jpg' %}" alt="微信" draggable="false">
+            </div>
+            <div class="shang_info">
+                <p>
+                    打开<span id="shang_pay_txt">微信</span>扫一扫，即可进行扫码打赏哦
+                </p>
+                <p>
+                    分享从这里开始，精彩与您同在
+                </p>
+            </div>
+        </div>
+        <script>
+            function dashangToggle() {
+                console.log(1)
+                $('.hide_box').fadeToggle();
+                $('.shang_box').fadeToggle();
+
+                $('.hide_box').click(function () {
+                    $('.shang_box').fadeOut();
+                    $('.hide_box').fadeOut();
+                })
+            }
+        </script>
+        <a href="javascript:;" οnclick="repeat()"></a>
+        {# 留言的内容 #}
+        <div id="postcomments" class="addcomment">
+            <ol id="comment_list" class="commentlist">
+                {% for comment in comment_list %}
+                    <li class="comment-content">
+                        <span class="comment-f">#{{ forloop.counter }}楼（ {{ comment.comment_user }} ）</span>
+                        <div class="comment-main">
+                            <p>
+                                <a class="address" href="#" rel="nofollow"
+                                   target="_blank">{{ comment.comment_user }}</a>
+                                <span class="time">({{ comment.add_time }})</span><br>
+                                {{ comment.content }}
+                            </p>
+                        </div>
+                    </li>
+                {% endfor %}
+
+
+            </ol>
+        </div>
+
+        <div class="title" id="comment">
+            <h3>留言</h3>
+        </div>
+        <div id="respond">
+            <div class="comment">
+                <div class="comment-box">
+                        <textarea placeholder="您的留言或留言（必填）" name="comment_textarea" id="comment-textarea" cols="100%"
+                                  rows="3" tabindex="3"></textarea>
+                    <div class="comment-ctrl">
+                        <div class="comment-prompt" style="display: none;"><i
+                                class="fa fa-spin fa-circle-o-notch"></i>
+                            <span class="comment-prompt-text">留言正在提交中...请稍后</span>
+                        </div>
+                        <div class="comment-success" style="display: none;">
+                            <i class="fa fa-check"></i>
+                            <span class="comment-prompt-text">留言提交成功...</span>
+                        </div>
+                        <button type="submit" name="comment-submit" id="comment-submit" tabindex="4">留言</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $(function () {
+            {# 给留言这个按钮添加点击事件 #}
+            $('#comment-submit').click(function () {
+                {# 拿到留言的内容 #}
+                var content = $("#comment-textarea").val()
+
+                {# 向后端发送数据 #}
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url 'comment' art_obj.id %}',
+                    data: {
+                        content: content,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function (data) {
+                        if (data.status == 'ok') {
+                            {# 重新加载页面, 让评论的信息展示出来 #}
+                            window.location.reload()
+                        } else {
+                            alert(data.msg)
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+{% endblock %}
